@@ -2,7 +2,7 @@ spring:
   application:
     name: sisyphus
   datasource:
-    url: jdbc:h2:./db/data:devel;AUTO_SERVER=TRUE
+    url: jdbc:h2:./db/devel;AUTO_SERVER=TRUE
     username: sa
     password:
     driver-class-name: org.h2.Driver
