@@ -1,5 +1,6 @@
 package me.piguy.inholland.sisyphus.configuration;
 
+import me.piguy.inholland.sisyphus.service.IbanService;
 import org.jooq.DSLContext;
 import org.jooq.impl.DSL;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,10 @@ public class BeanFactory {
     @Autowired
     public BeanFactory(DataSource dataSource) {
         this.dataSource = dataSource;
+    }
+
+    public IbanService ibanService() {
+        return new IbanService();
     }
 
     @Bean

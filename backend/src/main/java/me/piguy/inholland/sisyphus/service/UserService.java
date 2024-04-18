@@ -1,16 +1,13 @@
 package me.piguy.inholland.sisyphus.service;
 
+import me.piguy.inholland.sisyphus.model.User;
 import org.jooq.DSLContext;
-import org.jooq.impl.DSL;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Connection;
 import java.util.List;
+import java.util.UUID;
 
-import me.piguy.inholland.tables.pojos.*;
-import static me.piguy.inholland.Tables.*;
-import static org.jooq.impl.DSL.defaultValue;
+import static me.piguy.inholland.Tables.BANK_USER;
 
 @Service
 public class UserService {
@@ -20,11 +17,24 @@ public class UserService {
         this.ctx = ctx;
     }
 
-    public List<BankUser> getAllUsers() {
-        return ctx.selectFrom(BANK_USER).fetchInto(BankUser.class);
+    public List<User> getAllUsers() {
+        return ctx
+                .select(BANK_USER.ID ,BANK_USER.FIRST_NAME, BANK_USER.LAST_NAME, BANK_USER.PASSWORD)
+                .from(BANK_USER)
+                .fetchInto(User.class);
     }
 
-    public void addUser(BankUser user) {
-        ctx.insertInto(BANK_USER).values(defaultValue(BANK_USER.ID), user).execute();
+    public User getUserById(UUID userId) {
+        return ctx
+                .select(BANK_USER.ID ,BANK_USER.FIRST_NAME, BANK_USER.LAST_NAME, BANK_USER.PASSWORD)
+                .from(BANK_USER)
+                .where(BANK_USER.ID.eq(userId))
+                .fetchOneInto(User.class);
+    }
+
+    public void addUser(User user) {
+        ctx.insertInto(BANK_USER, BANK_USER.FIRST_NAME, BANK_USER.LAST_NAME, BANK_USER.PASSWORD)
+                .values(user.first_name(), user.last_name(), user.password())
+                .execute();
     }
 }
