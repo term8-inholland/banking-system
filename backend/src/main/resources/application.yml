@@ -2,22 +2,12 @@ spring:
   application:
     name: sisyphus
   datasource:
-    url: jdbc:h2:mem:db
+    url: jdbc:h2:./db/data:devel;AUTO_SERVER=TRUE
     username: sa
-    password: password
+    password:
     driver-class-name: org.h2.Driver
-  h2:
-    console:
-      enabled: true
-  jpa:
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.H2Dialect
-  devtools:
-    livereload:
-      enabled: true
+  jooq:
+    sql-dialect: h2
 springdoc:
   swagger-ui:
     path: /docs
