@@ -15,17 +15,35 @@ repositories {
 	mavenCentral()
 }
 
+tasks.register("loadEnv") {
+	doLast {
+		// todo
+	}
+}
+
+tasks.getByName("bootRun") {
+	dependsOn("loadEnv")
+}
+
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 
+	// constructor generation
+	implementation("org.projectlombok:lombok")
+	annotationProcessor("org.projectlombok:lombok")
+
 	// Swagger UI/OpenAPI spec generation
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:${project.properties["springdoc_version"]}")
+
+	// database stuff (goodbye jooq :( )
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
 	// devtools for hot reload (disabled for now)
 	// developmentOnly("org.springframework.boot:spring-boot-devtools")
 
 	// Unit testing
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	runtimeOnly("com.h2database:h2")
 }
 
 tasks.withType<Test> {

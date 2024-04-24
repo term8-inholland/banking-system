@@ -1,6 +1,12 @@
 spring:
   application:
     name: sisyphus
+  datasource:
+    hikari:
+      jdbc-url: jdbc:h2:mem:pianoshop-db
+  h2:
+    console:
+      enabled: true
 springdoc:
   swagger-ui:
     path: /docs
