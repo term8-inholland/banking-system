@@ -16,7 +16,7 @@ public class Account {
     private UUID accountId;
 
     @ManyToOne
-    private BankUser owner;
+    private User owner;
 
     private double balance;
     private double minimumBalance;

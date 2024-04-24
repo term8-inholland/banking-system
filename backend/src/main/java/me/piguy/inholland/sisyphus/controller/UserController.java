@@ -1,6 +1,6 @@
 package me.piguy.inholland.sisyphus.controller;
 
-import me.piguy.inholland.sisyphus.model.BankUser;
+import me.piguy.inholland.sisyphus.model.User;
 import me.piguy.inholland.sisyphus.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +19,7 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<BankUser>> getAllUsers() {
+    public ResponseEntity<List<User>> getAllUsers() {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 

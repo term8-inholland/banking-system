@@ -1,6 +1,6 @@
 package me.piguy.inholland.sisyphus.service;
 
-import me.piguy.inholland.sisyphus.model.BankUser;
+import me.piguy.inholland.sisyphus.model.User;
 import me.piguy.inholland.sisyphus.model.dto.BankUserDTO;
 import me.piguy.inholland.sisyphus.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -15,12 +15,12 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<BankUser> getAllUsers() {
+    public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
-    public BankUser addUser(BankUserDTO bankUserDTO) {
-        BankUser user = new BankUser(bankUserDTO.name(), bankUserDTO.password());
+    public User addUser(BankUserDTO bankUserDTO) {
+        User user = new User(bankUserDTO.name(), bankUserDTO.password());
         userRepository.save(user);
         return user;
     }
