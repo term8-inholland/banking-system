@@ -15,16 +15,6 @@ repositories {
 	mavenCentral()
 }
 
-tasks.register("loadEnv") {
-	doLast {
-		// todo
-	}
-}
-
-tasks.getByName("bootRun") {
-	dependsOn("loadEnv")
-}
-
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 
@@ -37,13 +27,13 @@ dependencies {
 
 	// database stuff (goodbye jooq :( )
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	runtimeOnly("com.h2database:h2")
 
 	// devtools for hot reload (disabled for now)
 	// developmentOnly("org.springframework.boot:spring-boot-devtools")
 
 	// Unit testing
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	runtimeOnly("com.h2database:h2")
 }
 
 tasks.withType<Test> {
