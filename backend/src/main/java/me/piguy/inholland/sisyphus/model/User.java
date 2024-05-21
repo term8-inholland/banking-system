@@ -1,14 +1,12 @@
 package me.piguy.inholland.sisyphus.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -27,6 +25,9 @@ public class User {
     private Timestamp registrationDate;
 
     private boolean active = false;
+
+    @ElementCollection(fetch = jakarta.persistence.FetchType.EAGER)
+    private List<Role> roles;
 
     public User(String email, String password) {
         this.email = email;

@@ -31,6 +31,9 @@ dependencies {
 
 	// security
 	implementation("org.springframework.boot:spring-boot-starter-security")
+	implementation("io.jsonwebtoken:jjwt-api:0.12.5")
+	implementation("io.jsonwebtoken:jjwt-impl:0.12.5")
+	implementation("io.jsonwebtoken:jjwt-gson:0.12.5")
 
 	// devtools for hot reload (disabled for now)
 	// developmentOnly("org.springframework.boot:spring-boot-devtools")
