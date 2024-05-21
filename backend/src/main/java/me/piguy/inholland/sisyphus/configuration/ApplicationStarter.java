@@ -16,8 +16,6 @@ public class ApplicationStarter implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        userService.addUser(new BankUserDTO("John Doe", "tobehashed"));
-        userService.addUser(new BankUserDTO("Jane Doe", "tobehashed"));
-        userService.addUser(new BankUserDTO("Laura Croft", "TOMBRAIDER"));
+        userService.addUser(new BankUserDTO("a@b.c", "tobehashed"));
     }
 }

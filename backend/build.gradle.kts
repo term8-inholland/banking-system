@@ -29,6 +29,9 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	runtimeOnly("com.h2database:h2")
 
+	// security
+	implementation("org.springframework.boot:spring-boot-starter-security")
+
 	// devtools for hot reload (disabled for now)
 	// developmentOnly("org.springframework.boot:spring-boot-devtools")
 

@@ -20,7 +20,7 @@ public class User {
     @GeneratedValue
     private UUID userId;
 
-    private String name;
+    private String email;
     private String password; /* HASHED */
 
     @CreationTimestamp
@@ -28,8 +28,8 @@ public class User {
 
     private boolean active = false;
 
-    public User(String name, String password) {
-        this.name = name;
+    public User(String email, String password) {
+        this.email = email;
         this.password = password;
     }
 }
