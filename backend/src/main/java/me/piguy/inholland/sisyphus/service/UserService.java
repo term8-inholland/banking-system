@@ -33,7 +33,7 @@ public class UserService {
 
         // TODO: hash HASH HASH HASH HAASSSSSHHHHH
         if (user != null && authReq.password().equals(user.getPassword())) {
-            return new UserAuthResDTO(user.getEmail() + "totallyarealtoken");
+            return new UserAuthResDTO(user.getEmail() , "totallyrealtoken");
         } else {
             throw new AuthenticationException("Invalid credentials");
         }
