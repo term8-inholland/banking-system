@@ -12,6 +12,8 @@
     <li><a href="#">Services</a></li>
     <li><a href="#">Products</a></li>
     <li><RouterLink to="/login">Login</RouterLink></li>
+    <li><RouterLink to="/transfer">Transfer</RouterLink></li>
+
   </ul>
 </nav>
   <main class="container">
