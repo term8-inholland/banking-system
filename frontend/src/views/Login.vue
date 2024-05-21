@@ -7,6 +7,9 @@ const passwordHint = ref("");
 const email = ref("");
 const password = ref("");
 
+const emailInvalid = ref(undefined);
+const passwordInvalid = ref(undefined);
+
 async function login(e: Event) {
   e.preventDefault();
   try {
@@ -24,9 +27,12 @@ async function login(e: Event) {
       console.log("login successful");
     } else {
       console.error("login failed");
+      // TODO: individually mark password or email as invalid
     }
   } catch (error) {
-      console.error("login failed", error);
+    console.error("login failed", error);
+    emailHint.value = "something went wrong, try again later";
+    passwordHint.value = "something went wrong, try again later";
   }
 }
 
@@ -34,9 +40,9 @@ async function login(e: Event) {
 
 <template>
   <form class="container" v-on:submit="login">
-    <input id="email" name="email" v-model="email" type="email" placeholder="Email" required>
+    <input id="email" name="email" v-model="email" type="email" placeholder="Email" :aria-invalid="emailInvalid" required>
     <small>{{ emailHint }}</small>
-    <input id="pass" name="pass" v-model="password" type="password" placeholder="Password" required>
+    <input id="pass" name="pass" v-model="password" type="password" placeholder="Password" :aria-invalid="passwordInvalid" required>
     <small>{{ passwordHint }}</small>
     <input type="submit" name="action" id="submit" value="Log in">
   </form>

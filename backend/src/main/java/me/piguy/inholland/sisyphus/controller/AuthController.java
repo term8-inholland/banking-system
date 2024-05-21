@@ -9,12 +9,16 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin(origins = "http://localhost:5173/")
 public class AuthController {
     private final UserService userService;
 
     public AuthController(UserService userService) {
         this.userService = userService;
+    }
+
+    @GetMapping
+    public ResponseEntity<String> ass() {
+        return ResponseEntity.ok("Hello");
     }
 
     @PostMapping
