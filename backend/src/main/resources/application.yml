@@ -10,3 +10,7 @@ spring:
 springdoc:
   swagger-ui:
     path: /docs
+jwt:
+  key-store: inholland.p12
+  key-store-password: geheim
+  key-alias: inholland
